@@ -43,6 +43,7 @@
 		switch($command) {
 			case "pwd":
 				$pwd = $userInterface.getPwd();
+				echo $pwd;
 				break;
 			case "perm":
 				$permissions = $userInterface.getPermissions();
@@ -134,15 +135,20 @@ $(document).ready( function() {
 	$("#XmenuForm").on('click', function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: "127.0.0.1/shell.php",
+		url: "http://127.0.0.1/shell.php",
 			type: "GET",
-			data: $(this).serialize()
+			data: $(this).serialize(),
+			success: function(data) {
+				alert(data);
+			}
 		});
 	});
 	
 	var xmenuform = document.getElementById("XmenuForm");
 	xmenuform.addEventListener("keydown", function(e) {
-		console.log("Hello")
+		if (e.which == 13) {
+			console.log("Hello")
+		}
 	});
 });
 </script>
