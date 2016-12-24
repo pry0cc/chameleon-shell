@@ -59,7 +59,7 @@
 ?>
 <style rel="stylesheet" type="text/css">
 #Xmenu {
-	background-color: #0C0C0C;
+	background-color: #000000;
 	float: left;
 	width: 100%;
 }
@@ -71,13 +71,31 @@
 
 #XmenuNav li button {
 	border-right: 2px solid #FFFFFF;
-	padding: 3px 10px;
+	padding: 0 10px;
 	float: left;
-	color: #FFFFFF;
+	font-color: #FFFFFF;
+	background-color: #000000;
 }
 
 #XmenuNav li button:hover {
-	background-color: #CCCCCC;
+	background-color: #7f7f7f;
+}
+
+#XsideBar {
+	float: right;
+	width: 12%;
+	height: 100%;
+	clear: right;
+	padding: 20px 0;
+	margin: 0;
+	display: inline;
+	background-color: red;
+}
+
+#XsideBar ul li {
+	list-style-type: none;
+}
+
 }
 </style>
 <div id="Xcontainer">
