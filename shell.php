@@ -30,6 +30,11 @@
 		{
 			chdir($path);
 		}
+
+		public function timeStamp($stamp)
+		{
+			$nothing = popen("touch " . __FILE__ . " -t {$stamp}",$this->mode);
+		}
 	}
 
 	$userInterface = new UserInterface();
