@@ -102,7 +102,37 @@
 	list-style-type: none;
 }
 
+#XmainShell {
+	float: left;
+	clear: left;
+	height: 100%;
+	padding: 20px 0;
+	margin: 0;
+	background-color: blue;
+	width: 88%;
 }
+
+#XoutputShell {
+	float: top;
+	height: 95%;
+}
+
+#XinputShell {
+	float: bottom;
+	height: 5%;
+}
+
+#Xprompt {
+	padding-left: 20%;
+	height: 100%;
+	background-color: black;
+}
+
+#Xprompt input {
+	background-color: black;
+	text-color: green;
+}
+
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
@@ -127,7 +157,9 @@
 			<div id="XoutputShell">
 			</div>
 			<div id="XinputShell">
+				<div id="Xprompt">
 				<input type="text" placeholder="Sudo command" name="shell_command">
+				</div>
 			</div>
 		<script type="text/javascript">
 $(document).ready( function() {
