@@ -90,6 +90,7 @@
 			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
 		</ul>
 		</form>
+	<br>
 	</div>
 	<div id="XmainContainer">
 		<div id="XmainShell">
