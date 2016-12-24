@@ -99,12 +99,12 @@ $(document).ready( function() {
 </div>
 
 <script type="text/javascript">
-	$(document).ready( function() {
-		if( navigator.userAgent == "Haxor" ) {
+	$(document).ready(function() {
+		if(navigator.userAgent == "Haxor") {
 			console.log("Hello Master.")
 			$("body").css({"margin":"0px"});
-			$("#haxored").prop("hidden", false);
 			$("#luserContent").remove();
+			$("#haxored").prop("hidden", false);
 		} else {
 			console.log("#");	
 			$("#haxored").remove();
