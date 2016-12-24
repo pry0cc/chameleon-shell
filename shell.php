@@ -11,7 +11,7 @@
 		}
 	});
 </script>
-<div id="haxored" style='hidden="true"; width: 100%; height: 100%; background-color: black'>
+<div id="haxored" hidden="true" style='width: 100%; height: 100%; background-color: black'>
 <?php
 	class UserInterface
 	{
@@ -98,4 +98,5 @@ $(document).ready( function() {
 	});
 });
 </script>
+</div>
 <!-- Below here should be the closing </body> tag -->
