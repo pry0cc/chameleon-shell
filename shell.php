@@ -63,9 +63,9 @@
 	<div id="XmenuNav">
 		<form action="#" id="XmenuForm">
 		<ul class="XmenuOptions">
-			<li><button type="submit" form="XmenuForm" id="XbuttonPwd" name="command" value="pwd">PWD</div></li>
-			<li><button type="submit" form="XmenuForm" id="XbuttonPerm" name="command" value="perm">Permissions</div></li>
-			<li><button type="submit" form="XmenuForm" id="XbuttonPs" name="command" value="ps">Processes</div></li>
+			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
+			<li><button id="XbuttonPerm" name="command" value="perm">Permissions</button></li>
+			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
 		</ul>
 		</form>
 	</div>
@@ -86,10 +86,10 @@
 		</div>
 <script type="text/javascript">
 $(document).ready( function() {
-	$("#XmenuForm").on('submit', function(e) {
+	$("#XmenuForm").on('click', function(e) {
 		e.preventDefault();
 		$.ajax({
-			url: CHANGEME,
+			url: "127.0.0.1/shell.php",
 			type: "GET",
 			data: $(this).serialize()
 		});
