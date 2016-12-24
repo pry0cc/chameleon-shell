@@ -58,10 +58,15 @@
 	}
 ?>
 <style rel="stylesheet" type="text/css">
-#Xmenu {
+#XmenuNav {
 	background-color: #000000;
-	float: left;
+	float: center;
 	width: 100%;
+	height: 7%;
+}
+
+#menuNav ul {
+	float: center;
 }
 
 #XmenuNav ul li {
@@ -70,6 +75,7 @@
 }
 
 #XmenuNav li button {
+	height: 100%;
 	border-right: 2px solid #FFFFFF;
 	padding: 0 10px;
 	float: left;
