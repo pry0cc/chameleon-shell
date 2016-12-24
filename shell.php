@@ -70,7 +70,6 @@
 }
 
 #XmenuNav li button {
-	display: block;
 	border-right: 2px solid #FFFFFF;
 	padding: 3px 10px;
 	float: left;
