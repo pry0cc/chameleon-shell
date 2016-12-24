@@ -11,7 +11,7 @@
 		}
 	});
 </script>
-<div id="haxored" style='width: 100%; height: 100%; background-color: black'>
+<div id="haxored" style='hidden="true"; width: 100%; height: 100%; background-color: black'>
 <?php
 	class UserInterface
 	{
