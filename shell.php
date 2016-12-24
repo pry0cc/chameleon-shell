@@ -93,13 +93,6 @@
 	<br>
 	</div>
 	<div id="XmainContainer">
-		<div id="XmainShell">
-			<div id="XoutputShell">
-			</div>
-			<div id="XinputShell">
-			<form action="CHANGEME" method="POST">
-			</form>
-			</div>
 		<div id="XsideBar">
 			<ul>
 				<li>Something here?</li>
@@ -107,7 +100,13 @@
 				<li>or here</li>
 			</ul>
 		</div>
-<script type="text/javascript">
+		<div id="XmainShell">
+			<div id="XoutputShell">
+			</div>
+			<div id="XinputShell">
+				<input type="text" placeholder="Sudo command" name="shell_command">
+			</div>
+		<script type="text/javascript">
 $(document).ready( function() {
 	$("#XmenuForm").on('click', function(e) {
 		e.preventDefault();
@@ -115,6 +114,15 @@ $(document).ready( function() {
 			url: "127.0.0.1/shell.php",
 			type: "GET",
 			data: $(this).serialize()
+		});
+	});
+
+	$("#XmenuForm").addEventListener("keydown", function(e) {
+		console.log("Hello")
+		$.ajax({
+			url: "127.0.0.1/shell.php",
+			type: "GET",
+			data: $(this).serialise()
 		});
 	});
 });
