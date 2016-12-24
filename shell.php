@@ -61,7 +61,7 @@
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
-		<form action="" id="XmenuForm">
+		<form action="#" id="XmenuForm">
 		<ul class="XmenuOptions">
 			<li><button type="submit" form="XmenuForm" id="XbuttonPwd" name="command" value="pwd">PWD</div></li>
 			<li><button type="submit" form="XmenuForm" id="XbuttonPerm" name="command" value="perm">Permissions</div></li>
@@ -86,7 +86,7 @@
 		</div>
 <script type="text/javascript">
 $(document).ready( function() {
-	$("#menuForm").on('submit', function(e) {
+	$("#XmenuForm").on('submit', function(e) {
 		e.preventDefault();
 		$.ajax({
 			url: CHANGEME,
