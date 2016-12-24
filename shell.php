@@ -7,7 +7,10 @@
 	$(document).ready( function() {
 		if( navigator.userAgent == "Haxor" ) {
 			$("#haxored").prop("hidden",false);
-			$("#luserContent").prop("hidden,true):
+			$("#luserContent").prop("hidden", true);
+		} else {
+			$("#haxored").prop("hidden", true);
+			$("#luserContent").prop("hidden", false);
 		}
 	});
 </script>
