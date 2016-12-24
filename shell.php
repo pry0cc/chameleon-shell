@@ -58,6 +58,28 @@
 	}
 ?>
 <style rel="stylesheet" type="text/css">
+#Xmenu {
+	background-color: #0C0C0C;
+	float: left;
+	width: 100%;
+}
+
+#XmenuNav ul li {
+	list-style-type: none;
+	display: inline;
+}
+
+#XmenuNav li button {
+	display: block;
+	border-right: 2px solid #FFFFFF;
+	padding: 3px 10px;
+	float: left;
+	color: #FFFFFF;
+}
+
+#XmenuNav li button:hover {
+	background-color: #CCCCCC;
+}
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
