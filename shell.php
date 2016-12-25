@@ -126,12 +126,12 @@
 #Xprompt {
 	padding-left: 20%;
 	height: 100%;
-	background-color: black;
 }
 
 #Xprompt input {
 	background-color: black;
 	text-color: green;
+	border: none;
 }
 
 </style>
