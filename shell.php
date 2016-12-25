@@ -60,7 +60,7 @@
 ?>
 <style rel="stylesheet" type="text/css">
 #XmenuNav {
-	background-color: #000000;
+	background-color: #161616;
 	float: center;
 	width: 100%;
 	height: 7%;
@@ -75,19 +75,28 @@
 	display: inline;
 }
 
+#XmenuNav #home {
+	background-color: #2d2d2d;
+	color: #fff;
+	border: 0px;
+}
+
+
 #XmenuNav li button {
 	height: 100%;
-	border-right: 2px solid #FFFFFF;
+	border: 0px;
 	padding: 0 10px;
+	
 	float: left;
-	font-color: #FFFFFF;
-	background-color: #000000;
+	color: #605e56;
+	background-color: #161616;
 }
 
 #XmenuNav li button:hover {
-	background-color: #7f7f7f;
+	background-color: #2d2d2d;
+	color: #fff;
+	border: 0px;
 }
-
 #XsideBar {
 	float: right;
 	width: 12%;
@@ -96,7 +105,7 @@
 	padding: 20px 0;
 	margin: 0;
 	display: inline;
-	background-color: red;
+	background-color: #151515;
 }
 
 #XsideBar ul li {
@@ -109,7 +118,7 @@
 	height: 100%;
 	padding: 20px 0;
 	margin: 0;
-	background-color: blue;
+	background-color: #1f1f1f;
 	width: 88%;
 }
 
@@ -129,7 +138,7 @@
 }
 
 #Xprompt input {
-	background-color: black;
+	background-color: #161616;
 	text-color: green;
 	border: none;
 }
@@ -139,6 +148,7 @@
 	<div id="XmenuNav">
 		<form action="#" id="XmenuForm">
 		<ul class="XmenuOptions">
+			<li><button id="home"> Home </button></li>
 			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
 			<li><button id="XbuttonPerm" name="command" value="perm">Permissions</button></li>
 			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
