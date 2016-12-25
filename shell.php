@@ -1,5 +1,7 @@
 <?php
 	error_reporting(E_ALL);
+	
+	$ip = "127.0.0.1";
 
 	class UserInterface
 	{
@@ -120,8 +122,8 @@
 	float: left;
 	clear: left;
 	height: 100%;
-	padding: 20px 0;
-	margin: 0;
+	padding: 20px 0px;
+	margin: 0px;
 	background-color: #1f1f1f;
 	width: 88%;
 }
@@ -169,6 +171,7 @@
 			</ul>
 		</div>
 		<div id="XmainShell">
+	<h1> hello </h1>
 			<div id="XoutputShell">
 			</div>
 			<div id="XinputShell">
@@ -181,7 +184,7 @@ $(document).ready( function() {
 
 	function submit(command) {
 		$.ajax({
-		url: "http://127.0.0.1/shell.php",
+		url: "http://<?php echo $ip; ?>/shell.php",
 			type: "GET",
 			data: {"command": command},
 			success: function(data) {
