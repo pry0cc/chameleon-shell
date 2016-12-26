@@ -33,6 +33,12 @@
 		{
 			$nothing = popen("touch " . __FILE__ . " -t {$stamp}",$this->mode);
 		}
+
+		public function getVersion()
+		{
+			$version = "Current PHP Version: " . phpversion();
+			return $version;
+		}
 	}
  
 	?>
@@ -204,7 +210,7 @@
 	<div id="XmainContainer">
 		<div id="XsideBar">
 			<ul>
-				<li>Something here?</li>
+				<li id="XPHPversion">Something here?</li>
 				<li>or here</li>
 				<li>or here</li>
 			</ul>
@@ -264,6 +270,8 @@ $(document).ready( function() {
 			console.log("Hello")
 		}
 	});
+
+	$("#XPHPversion").val("<?php echo $userInterface->getVersion(); ?>");
 });
 </script>
 </div>
