@@ -267,7 +267,7 @@ $(document).ready( function() {
 		}
 	});
 
-	$("#XPHPversion").val("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
+	$("#XPHPversion").text("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
 });
 </script>
 </div>
