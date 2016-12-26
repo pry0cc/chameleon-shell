@@ -247,8 +247,8 @@ $(document).ready( function() {
 
 	function renderCmd(command, output) {
 		var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
-		$("#XShellOutput").append("<p class='command'> " + time + " root@box $ " + command + "</p>");
-		$("#XShellOutput").append("<p class='output'>" + output + "</p>");
+		$("#XShellOutput").append("<pre class='command'> " + time + " root@box $ " + command + "</pre>");
+		$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
 	}
 	
 
