@@ -16,7 +16,7 @@
 
 		public function doCommand($command)
 		{
-			return system($command);
+			return system($command." 2>&1");
 		}
 		
 		public function getPwd()
@@ -137,7 +137,7 @@
 #XmainShell {
 	/*float: center;
 	 clear: left; */
-	height: 100%;
+	height: 90%;
 	padding: 20px 0px;
 	margin: 0px;
 	background-color: #1f1f1f;
@@ -147,20 +147,8 @@
 
 #XoutputShell {
 	float: top;
-	height: 95%;
-}
-
-#Xprompt {
-	padding-left: 20%;
 	height: 100%;
 }
-
-#Xprompt input {
-	background-color: #161616;
-	text-color: green;
-	border: none;
-}
-
 #XinputShell {
 	margin-left: 3%;
 	margin-right: 3%;
@@ -184,11 +172,11 @@
 #XShellContainer {
 	margin-top: 2%;
 	margin-left: 5%;
-	margin-right: 5%;
+	margin-right:5%;
 	padding-left: 2%;
-	padding-right: 2%;
+	padding-right: 0px;
 	background-color: #2d2d2d;
-	height: 50%;
+	height: 80%;
 }
 
 #XShellOutput {
@@ -199,18 +187,20 @@
 	padding-top: 15px;
 }
 
+
+#XShellOutput pre {
+	display: inline;
+}
+
 #XShellOutput .command {
 	color: #1793d1;
 }
 
 #XShellOutput .output {
 	color: #cad0c4;
+	padding-bottom:40px;
 }
 
-#XShellOutput pre {
-	margin-top: 1px;
-	margin-bottom: 1px;
-}
 
 
 </style>
@@ -273,6 +263,7 @@ $(document).ready( function() {
 		var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
 		$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
 		$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
+		$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
 	}
 	
 	var request = "";
