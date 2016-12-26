@@ -156,10 +156,12 @@
 	padding-right: 2%;
 }
 
+
 #XinputShell input {
 	width: 100%;
 	height: 50px;
 	border: 0px;
+	outline: none;
 	padding-left: 10px;
 	font-family: monospace;
 	font-size: 15px;
