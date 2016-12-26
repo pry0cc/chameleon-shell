@@ -152,6 +152,26 @@
 	border: none;
 }
 
+#XShellContainer {
+	margin-top: 2%;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-left: 2%;
+	padding-right: 2%;
+	background-color: #2d2d2d;
+	height: 50%;
+}
+
+#XShellOutput {
+	padding-top: 10px;
+}
+
+#XShellOutput p {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
@@ -174,14 +194,14 @@
 			</ul>
 		</div>
 		<div id="XmainShell">
-	<h1> hello </h1>
-			<div id="XoutputShell">
-			</div>
-			<div id="XinputShell">
-				<div id="Xprompt">
-				<input type="text" placeholder="Sudo command" name="shell_command">
-				</div>
-			</div>
+		<div id="XShellContainer">
+		<div id="XShellOutput">
+			<p> Sample output </p>
+			<p> Sample output </p>
+			<p> Sample output </p>
+			<p> Sample output </p>
+		</div>
+		</div>
 		<script type="text/javascript">
 $(document).ready( function() {
 
