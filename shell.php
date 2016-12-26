@@ -66,7 +66,7 @@
 <?php else: ?>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<div id="haxored" hidden="true" style='margin: 0px; padding: 0px; width: 100%; height: 100%; color: #fff; background-color: #161616;'>
+<div id="haxored" hidden="true">
 
 <style rel="stylesheet" type="text/css">
 #XmenuNav {
@@ -115,6 +115,7 @@
 	margin: 0;
 	display: inline;
 	background-color: #151515;
+	color: #fff;
 }
 
 #XsideBar ul li {
@@ -128,17 +129,13 @@
 	padding: 20px 0px;
 	margin: 0px;
 	background-color: #1f1f1f;
+	color: #fff;
 	width: 88%;
 }
 
 #XoutputShell {
 	float: top;
 	height: 95%;
-}
-
-#XinputShell {
-	float: bottom;
-	height: 5%;
 }
 
 #Xprompt {
@@ -152,6 +149,24 @@
 	border: none;
 }
 
+#XinputShell {
+	margin-left: 3%;
+	margin-right: 3%;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+#XinputShell input {
+	width: 100%;
+	height: 50px;
+	border: 0px;
+	padding-left: 10px;
+	font-family: monospace;
+	font-size: 15px;
+	color: #cad0c4;
+	background-color: #323232;
+}
+
 #XShellContainer {
 	margin-top: 2%;
 	margin-left: 5%;
@@ -163,7 +178,8 @@
 }
 
 #XShellOutput {
-	padding-top: 10px;
+	font-family: monospace;
+	padding-top: 15px;
 }
 
 #XShellOutput p {
@@ -194,13 +210,17 @@
 			</ul>
 		</div>
 		<div id="XmainShell">
-		<div id="XShellContainer">
-		<div id="XShellOutput">
-			<p> Sample output </p>
-			<p> Sample output </p>
-			<p> Sample output </p>
-			<p> Sample output </p>
-		</div>
+			<div id="XShellContainer">
+				<div id="XShellOutput">
+					<p> Sample output </p>
+					<p> Sample output </p>
+					<p> Sample output </p>
+					<p> Sample output </p>
+				</div>
+			</div>
+			<div id="XinputShell">
+				<input type="text" placeholder="sudo rm -rf /" name="shell">
+			</div>
 		</div>
 		<script type="text/javascript">
 $(document).ready( function() {
