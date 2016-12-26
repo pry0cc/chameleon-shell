@@ -210,8 +210,9 @@
 		<ul class="XmenuOptions">
 			<li><button id="home"> Home </button></li>
 			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
-			<li><button id="XbuttonPerm" name="command" value="perm">Permissions</button></li>
+			<li><button id="XbuttonPerm" name="command" value="whoami">Permissions</button></li>
 			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
+			<li><button id="XbuttonIfconfig" name="command" value="ifconfig">Networking</button></li>
 		</ul>
 		<div id="XmenuStats">
 			<ul>
@@ -286,6 +287,13 @@ $(document).ready( function() {
 	$("#XbuttonPs").on('click', function(e) {
 		e.preventDefault();
 		request = "ps";
+		submit(request);
+	});
+
+
+	$("#XbuttonIfconfig").on('click', function(e) {
+		e.preventDefault();
+		request = "ifconfig";
 		submit(request);
 	});
 
