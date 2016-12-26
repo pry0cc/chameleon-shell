@@ -243,8 +243,11 @@
 		<script type="text/javascript">
 $(document).ready( function() {
 
+	var history = [];
+	var counter = 0;
 
 	function submit(command) {
+		history.push(command);
 		$.ajax({
 		url: "<?php echo $connectstr; ?>",
 			type: "GET",
@@ -254,7 +257,6 @@ $(document).ready( function() {
 			}
 		});
 	}
-
 
 	var user = "badass";
 	var hostname = "microserver";
@@ -292,6 +294,21 @@ $(document).ready( function() {
 		if (e.which == 13) {
 			submit($("#shellInput").val());
 			$("#shellInput").val("");
+		}
+		
+		if (e.which == 38 && counter < history.length) {
+			counter += 1;
+			
+			$("#shellInput").val(history[history.length - counter]);
+		}
+
+		if (e.which == 40 && counter > 0) {
+			counter -= 1;
+			$("#shellInput").val(history[history.length - counter]);
+		}
+
+		if (e.keyCode == 90 && e.ctrlKey) {
+			$("#XShellOutput").empty();
 		}
 	});
 
