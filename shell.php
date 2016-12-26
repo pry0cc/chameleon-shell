@@ -33,12 +33,6 @@
 		{
 			$nothing = popen("touch " . __FILE__ . " -t {$stamp}",$this->mode);
 		}
-
-		public function getVersion()
-		{
-			$version = "Current PHP Version: " . phpversion();
-			return $version;
-		}
 	}
  
 	?>
@@ -273,7 +267,7 @@ $(document).ready( function() {
 		}
 	});
 
-	$("#XPHPversion").val("<?php echo $userInterface->getVersion(); ?>");
+	$("#XPHPversion").val("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
 });
 </script>
 </div>
