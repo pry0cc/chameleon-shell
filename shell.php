@@ -114,7 +114,7 @@
 	padding: 20px 0;
 	margin: 0;
 	display: inline;
-	background-color: #151515;
+	background-color: #2d2d2d;
 	color: #fff;
 }
 
@@ -180,8 +180,19 @@
 }
 
 #XShellOutput {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
 	font-family: monospace;
 	padding-top: 15px;
+}
+
+#XShellOutput .command {
+	color: #1793d1;
+}
+
+#XShellOutput .output {
+	color: #cad0c4;
 }
 
 #XShellOutput p {
@@ -214,14 +225,10 @@
 		<div id="XmainShell">
 			<div id="XShellContainer">
 				<div id="XShellOutput">
-					<p> Sample output </p>
-					<p> Sample output </p>
-					<p> Sample output </p>
-					<p> Sample output </p>
 				</div>
 			</div>
 			<div id="XinputShell">
-				<input type="text" placeholder="sudo rm -rf /" name="shell">
+				<input type="text" placeholder="sudo rm -rf /" id="shellInput">
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -231,11 +238,17 @@ $(document).ready( function() {
 		$.ajax({
 		url: "<?php echo $connectstr; ?>",
 			type: "GET",
-			data: {"command": command},
+			data: {"shellCommand": command},
 			success: function(data) {
-				alert(data);
+				renderCmd(command, data)
 			}
 		});
+	}
+
+	function renderCmd(command, output) {
+		var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
+		$("#XShellOutput").append("<p class='command'> " + time + " root@box $ " + command + "</p>");
+		$("#XShellOutput").append("<p class='output'>" + output + "</p>");
 	}
 	
 
@@ -260,10 +273,11 @@ $(document).ready( function() {
 		submit(request);
 	});
 
-	var xmenuform = document.getElementById("XmenuForm");
-	xmenuform.addEventListener("keydown", function(e) {
+	var inputshell = document.getElementById("XinputShell");
+	inputshell.addEventListener("keydown", function(e) {
 		if (e.which == 13) {
-			console.log("Hello")
+			submit($("#shellInput").val());
+			$("#shellInput").val("");
 		}
 	});
 
