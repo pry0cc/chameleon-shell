@@ -31,89 +31,41 @@ iframes = page_html.css("iframe")
 
 fixes = 0
 
-for image in images
-	begin
-		if image["src"][0..3] != "http" and image["src"][0..1] == "//"
-			image["src"] = "http:" + image["src"]
-			fixes += 1
-		elsif image["src"][0] == "/"
-			image["src"] = baseurl + image["src"]
-			fixes += 1
-		elsif image["src"][0..1] == ".."
-			image["src"] = url + image["src"]
-			fixes += 1
+["img","script","iframe"].each do |type|
+	page_html.css(type).each do |thing|
+		begin
+			if thing["src"][0..3] != "http" and thing["src"][0..1] == "//"
+				thing["src"] = "http:" + thing["src"]
+				fixes += 1
+			elsif thing["src"][0] == "/"
+				thing["src"] = baseurl + thing["src"]
+				fixes += 1
+			elsif thing["src"][0..1] == ".."
+				thing["src"] = url + thing["src"]
+				fixes += 1
+			end
+		rescue
 		end
-	rescue Exception => e
-		#puts "image error " + e.to_s
 	end
 end
 
-for link in links
-	begin
-		if link["href"][0..3] != "http" and link["href"][0..1] == "//"
-			link["href"] = "http:" + link["href"]
-			fixes += 1
-		elsif link["href"][0] == "/"
-			link["href"] = baseurl + image["src"]
-			fixes += 1
-		elsif link["href"][0..1] == ".."
-			link["href"] = url + link["href"]
-			fixes += 1
+["css","a"].each do |type|
+	page_html.css(type).each do |thing|
+		begin
+			if thing["href"][0..3] != "http" and thing["href"][0..1] == "//"
+				thing["href"] = "http:" + thing["href"]
+				fixes += 1
+			elsif thing["href"][0] == "/"
+				thing["href"] = baseurl + thing["href"]
+				fixes += 1
+			elsif thing["href"][0..1] == ".."
+				thing["href"] = url + thing["href"]
+				fixes += 1
+			end
+		rescue
 		end
-	rescue Exception => e
-		# puts "link error " + e.to_s
 	end
 end
-
-for script in scripts
-	begin
-		if script["src"][0..3] != "http" and script["src"][0..1] == "//"
-			script["src"] = "http:" + script["src"]
-			fixes += 1
-		elsif script["src"][0] == "/"
-			script["src"] = baseurl + script["src"]
-			fixes += 1
-		elsif script["src"][0..1] == ".."
-			script["src"] = url + script["src"]
-			fixes += 1
-		end
-	rescue Exception => e
-		#puts "script error " + e.to_s
-	end
-end
-
-for iframe in iframes
-	begin
-		if iframe["src"][0..3] != "http" and iframe["src"][0..1] == "/"
-			iframe["src"] = "http:" + iframe["src"]
-			fixes += 1
-		elsif iframe["src"][0] == "/"
-			iframe["src"] = baseurl + iframe["src"]
-			fixes += 1 
-		elsif iframe["src"][0..1] == ".."
-			iframe["src"] = url + iframe["src"]
-			fixes += 1
-		end
-	rescue Exception => e
-	end
-end
-
-for stylesheet in css
-	begin
-		if stylesheet["href"][0..3] != "http" and stylesheet["href"][0..1] == "/"
-			stylesheet["href"] = "http:" + stylesheet["href"]
-			fixes += 1
-		elsif stylesheet["href"][0] == "/"
-			stylesheet["href"] = baseurl + stylesheet["href"]
-			fixes += 1 
-		elsif stylesheet["href"][0..1] == ".."
-			stylesheet["href"] = url + stylesheet["href"]
-			fixes += 1
-		end
-	rescue Exception => e
-	end
-end
-
 
 puts "Fixed #{fixes} dependency issues"
 
