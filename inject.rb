@@ -54,7 +54,7 @@ for link in links
 			link["href"] = "http:" + link["href"]
 			fixes += 1
 		elsif link["href"][0] == "/"
-			link["href"] = baseurl + image["src"]
+			link["href"] = baseurl + link["href"]
 			fixes += 1
 		elsif link["href"][0..1] == ".."
 			link["href"] = url + link["href"]
