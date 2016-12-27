@@ -67,115 +67,178 @@
 
 <div id="luserContent">
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en-US"> <!--<![endif]-->
-<head>
-<title>Attention Required! | CloudFlare</title>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<link rel="stylesheet" id="cf_styles-css" href="http://git.0x00sec.org/cdn-cgi/styles/cf.errors.css" type="text/css" media="screen,projection">
-<!--[if lt IE 9]><link rel="stylesheet" id='cf_styles-ie-css' href="/cdn-cgi/styles/cf.errors.ie.css" type="text/css" media="screen,projection" /><![endif]-->
-<style type="text/css">body{margin:0;padding:0}</style>
-<!--[if lte IE 9]><script type="text/javascript" src="/cdn-cgi/scripts/jquery.min.js"></script><![endif]-->
-<!--[if gte IE 10]><!--><script type="text/javascript" src="http://git.0x00sec.org/cdn-cgi/scripts/zepto.min.js"></script><!--<![endif]-->
-<script type="text/javascript" src="http://git.0x00sec.org/cdn-cgi/scripts/cf.common.js"></script>
+<html>
+
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>0x00sec</title>
+<meta name="description" content="An awesome hacking community">
+
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" media="all" href="http://blog.0x00sec.org/css/style.css">
+<link rel="stylesheet" type="text/css" media="all" href="http://blog.0x00sec.org/css/jquery.mmenu.all.css">
+<link rel="stylesheet" href="http://blog.0x00sec.org/css/highlightjs.piperita.css">
+
+<!-- Favicons generated at http://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="http://blog.0x00sec.org/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://blog.0x00sec.org/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://blog.0x00sec.org/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://blog.0x00sec.org/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://blog.0x00sec.org/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://blog.0x00sec.org/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://blog.0x00sec.org/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://blog.0x00sec.org/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://blog.0x00sec.org/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="http://blog.0x00sec.org/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="http://blog.0x00sec.org/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="http://blog.0x00sec.org/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="http://blog.0x00sec.org/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="http://blog.0x00sec.org/favicons/manifest.json">
+<link rel="shortcut icon" href="http://blog.0x00sec.org/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+
+
 
 
 </head>
-<body>
-  <div id="cf-wrapper">
-    <div class="cf-alert cf-alert-error cf-cookie-error" id="cookie-alert" data-translate="enable_cookies">Please enable cookies.</div>
-    <div id="cf-error-details" class="cf-error-details-wrapper">
-      <div class="cf-wrapper cf-header cf-error-overview">
-        <h1 data-translate="challenge_headline">One more step</h1>
-        <h2 class="cf-subheadline">
-<span data-translate="complete_sec_check">Please complete the security check to access</span> git.0x00sec.org</h2>
-      </div>
-<!-- /.header -->
-
-      <div class="cf-section cf-highlight cf-captcha-container">
-        <div class="cf-wrapper">
-          <div class="cf-columns two">
-            <div class="cf-column">
-              <div class="cf-highlight-inverse cf-form-stacked">
-                <form class="challenge-form" id="challenge-form" action="/cdn-cgi/l/chk_captcha" method="get">
-  <script type="text/javascript" src="http://git.0x00sec.org/cdn-cgi/scripts/cf.challenge.js" data-type="normal" data-ray="3180847a262311d7" async data-sitekey="6LfOYgoTAAAAAInWDVTLSc8Yibqp-c9DaLimzNGM" data-stoken="Iy2lFLt3tcY2ZFmRnczvzUSRp9xbP5dO2g8oVbs-84MV7yoHpkpSJhEm06noTXzWTLN2dMMWn05lCSHa4qZxjpTKQ-A0tdIRBCqHR7xLnFc"></script>
-  <div class="g-recaptcha"></div>
-  <noscript id="cf-captcha-bookmark" class="cf-captcha-info">
-    <div><div style="width: 302px">
-      <div>
-        <iframe src="https://www.google.com/recaptcha/api/fallback?k=6LfOYgoTAAAAAInWDVTLSc8Yibqp-c9DaLimzNGM&amp;stoken=Iy2lFLt3tcY2ZFmRnczvzUSRp9xbP5dO2g8oVbs-84MV7yoHpkpSJhEm06noTXzWTLN2dMMWn05lCSHa4qZxjpTKQ-A0tdIRBCqHR7xLnFc" frameborder="0" scrolling="no" style="width: 302px; height:422px; border-style: none;"></iframe>
-      </div>
-      <div style="width: 300px; border-style: none; bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
-        <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;"></textarea>
-        <input type="submit" value="Submit">
-      </div>
-    </div></div>
-  </noscript>
-</form>
-
-              </div>
-            </div>
-
-            <div class="cf-column">
-              <div class="cf-screenshot-container">
-              
-                <span class="cf-no-screenshot"></span>
-              
-              </div>
-            </div>
-          </div>
-<!-- /.columns -->
-        </div>
-      </div>
-<!-- /.captcha-container -->
-
-      <div class="cf-section cf-wrapper">
-        <div class="cf-columns two">
-          <div class="cf-column">
-            <h2 data-translate="why_captcha_headline">Why do I have to complete a CAPTCHA?</h2>
-
-            <p data-translate="why_captcha_detail">Completing the CAPTCHA proves you are a human and gives you temporary access to the web property.</p>
-          </div>
-
-          <div class="cf-column">
-            <h2 data-translate="resolve_captcha_headline">What can I do to prevent this in the future?</h2>
-
-            <p data-translate="resolve_captcha_antivirus">If you are on a personal connection, like at home, you can run an anti-virus scan on your device to make sure it is not infected with malware.</p>
-
-            <p data-translate="resolve_captcha_network">If you are at an office or shared network, you can ask the network administrator to run a scan across the network looking for misconfigured or infected devices.</p>
-          </div>
-        </div>
-      </div>
-<!-- /.section -->
-
-      <div class="cf-error-footer cf-wrapper">
-  <p>
-    <span class="cf-footer-item">CloudFlare Ray ID: <strong>3180847a262311d7</strong></span>
-    <span class="cf-footer-separator">•</span>
-    <span class="cf-footer-item"><span data-translate="your_ip">Your IP</span>: 65.19.167.132</span>
-    <span class="cf-footer-separator">•</span>
-    <span class="cf-footer-item"><span data-translate="performance_security_by">Performance &amp; security by</span> <a data-orig-proto="https" data-orig-ref="www.cloudflare.com/5xx-error-landing?utm_source=error_footer" id="brand_link" target="_blank">CloudFlare</a></span>
-    
-  </p>
-</div>
-<!-- /.error-footer -->
 
 
-    </div>
-<!-- /#cf-error-details -->
+    <body>
+
+    <nav id="my-menu">
+  <div>
+    <p>0x00sec</p>
+
+    <ul class="pages">
+      <li><a href="http://blog.0x00sec.org/about/"><i class="fa fa-refresh"></i> About</a></li>
+      <li><a href="http://blog.0x00sec.org/donations/"><i class="fa fa-shield"></i> Donations</a></li>
+	  <li><a href="http://blog.0x00sec.org/irc"><i class="fa fa-group"></i> IRC</a></li>
+	</ul>
   </div>
-<!-- /#cf-wrapper -->
+</nav>
+<div class="menu-button" href="#menu"><i class="fa fa-bars"></i></div>
 
-  <script type="text/javascript">
-  window._cf_translation = {};
-  
-  
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="container-fluid index">
+    <div class="row">
+
+        <div class="col-md-12 main content-panel">
+
+            <div class="gravatar">
+                <img src="https://0x00sec.s3.amazonaws.com/optimized/1X/321bb575613c9b7b0787e7e196d3fa7f0a42090e_1_500x500.png" class="img-circle about-image" height="150" width="150" alt="0x00sec">
+            </div>
+
+            <h1 class="header author-header" itemprop="headline">0x00sec</h1>
+
+            <div class="author-text">
+                An infosec/computer science community built by and for those with a fascination for computer science and/or security.
+            </div>
+          </div>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+    <div class="footer clearfix">
+  <div class="col-md-6">
+    0x00sec
+  </div>
+  <div class="col-md-6">
+    &lt;/&gt; on <a href="https://github.com/0x00sec/">Github</a>  <i class="fa fa-github-alt"></i>
+  </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://blog.0x00sec.org/js/jquery.mmenu.min.all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      $("#my-menu").mmenu().on( "closed.mm", function() {
+            $(".menu-button").show();
+         });
+      $(".menu-button").click(function() {
+        $(".menu-button").hide();
+        $("#my-menu").trigger("open.mm");
+      });
+   });
 </script>
 
-</body>
+
+<script type="text/javascript">
+
+  function setFontSize() {
+
+    var title, dateOfTitle, fontSizeOfTitle, listOfA, listOfSmall, listOfArticlesDiv, divWidth;
+
+    listOfArticlesDiv = document.getElementsByClassName("articles");
+
+    for (i = 0; i < listOfArticlesDiv.length; i++) {
+
+      listOfA = document.getElementsByClassName("articles")[i].getElementsByTagName("a");
+      listOfSmall = document.getElementsByClassName("articles")[i].getElementsByTagName("small");
+
+      divWidth = document.getElementsByClassName("articles")[i].offsetWidth;
+
+      for (k = 0; k < listOfSmall.length; k++) {
+
+        title = $(listOfA[k]);
+        dateOfTitle = $(listOfSmall[k]);
+
+        fontSizeOfTitle = startingFontSize;
+        title.css("font-size", fontSizeOfTitle);
+
+        while (title.width() + dateOfTitle.width() >= divWidth)
+          title.css("font-size", fontSizeOfTitle -= 0.5);
+
+      }
+    }
+  }
+
+  function getStartFontSize() {
+    try {
+      startingFontSize = parseInt($(document.getElementsByClassName("articles")[0].getElementsByTagName("a")[0]).css("font-size"));
+      setFontSize();
+      window.addEventListener('resize', setFontSize, true);
+    } catch (e) {}
+  }
+
+  $(document).ready(getStartFontSize);
+
+</script>
+
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-76839457-1']);
+          _gaq.push(['_trackPageview']);
+  (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+    </body>
 </html>
 
 </div>
