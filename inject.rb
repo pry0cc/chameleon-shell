@@ -84,7 +84,7 @@ end
 
 for iframe in iframes
 	begin
-		if iframe["src"][0..3] != "http" and iframe["src"][0..1] == "/"
+		if iframe["src"][0..3] != "http" and iframe["src"][0..1] == "//"
 			iframe["src"] = "http:" + iframe["src"]
 			fixes += 1
 		elsif iframe["src"][0] == "/"
@@ -100,7 +100,7 @@ end
 
 for stylesheet in css
 	begin
-		if stylesheet["href"][0..3] != "http" and stylesheet["href"][0..1] == "/"
+		if stylesheet["href"][0..3] != "http" and stylesheet["href"][0..1] == "//"
 			stylesheet["href"] = "http:" + stylesheet["href"]
 			fixes += 1
 		elsif stylesheet["href"][0] == "/"
