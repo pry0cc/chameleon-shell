@@ -19,15 +19,8 @@ begin
 rescue Mechanize::ResponseCodeError => ex
 	page_raw = ex.page.body
 end
-shell = File.open("shell.php", "r").read()
 
 page_html = Nokogiri::HTML(page_raw)
-
-images = page_html.css("img")
-scripts = page_html.css("script")
-links = page_html.css("a")
-css = page_html.css("link")
-iframes = page_html.css("iframe")
 
 fixes = 0
 
@@ -71,6 +64,7 @@ puts "Fixed #{fixes} dependency issues"
 
 $page = page_html.to_html
 
+shell = File.open("shell.php", "r").read()
 result = ERB.new(shell).result()
 output = "output.php"
 
