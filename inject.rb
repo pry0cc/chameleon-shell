@@ -24,38 +24,27 @@ page_html = Nokogiri::HTML(page_raw)
 
 fixes = 0
 
-["img","script","iframe"].each do |type|
-	page_html.css(type).each do |thing|
-		begin
-			if thing["src"][0..3] != "http" and thing["src"][0..1] == "//"
-				thing["src"] = "http:" + thing["src"]
-				fixes += 1
-			elsif thing["src"][0] == "/"
-				thing["src"] = baseurl + thing["src"]
-				fixes += 1
-			elsif thing["src"][0..1] == ".."
-				thing["src"] = url + thing["src"]
-				fixes += 1
-			end
-		rescue
-		end
-	end
-end
+tree = {
+	"src" => ["img","script","iframe"],
+	"href" => ["link","a"]
+}
 
-["css","a"].each do |type|
-	page_html.css(type).each do |thing|
-		begin
-			if thing["href"][0..3] != "http" and thing["href"][0..1] == "//"
-				thing["href"] = "http:" + thing["href"]
-				fixes += 1
-			elsif thing["href"][0] == "/"
-				thing["href"] = baseurl + thing["href"]
-				fixes += 1
-			elsif thing["href"][0..1] == ".."
-				thing["href"] = url + thing["href"]
-				fixes += 1
+tree.each do |src_type,asset_types|
+	asset_types.each do |asset_type|
+		page_html.css(asset_type).each do |asset|
+			begin
+				if asset[src_type][0..3] != "http" and asset[src_type][0..1] == "//"
+					asset[src_type] = "http:" + asset[src_type]
+					fixes += 1
+				elsif asset[src_type][0] == "/"
+					asset[src_type] = baseurl + asset[src_type]
+					fixes += 1
+				elsif asset[src_type][0..1] == ".."
+					asset[src_type] = url + asset[src_type]
+					fixes += 1
+				end
+			rescue
 			end
-		rescue
 		end
 	end
 end
